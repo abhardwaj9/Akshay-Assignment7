@@ -6,6 +6,13 @@ public class CustomArrayList<T> implements CustomList<T> {
 	Object[] items = new Object[10];
 	int size = 0;
 
+	public CustomArrayList() {
+
+		this.items = new Object[10];
+		Arrays.fill(this.items, null);
+		this.size = 0;
+	}
+
 	@Override
 	public boolean add(T item) {
 		if (size == items.length) {
@@ -90,4 +97,3 @@ public class CustomArrayList<T> implements CustomList<T> {
 	}
 
 }
-
