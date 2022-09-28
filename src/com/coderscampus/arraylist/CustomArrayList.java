@@ -75,25 +75,27 @@ public class CustomArrayList<T> implements CustomList<T> {
 		return isAdded;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public T remove(int index) throws IndexOutOfBoundsException
 
 	{
-		T t = null;
 
-		if (index >= 0 && index < this.size) {
-			t = (T) items[index];
+		if (index >= size) {
+			throw new IndexOutOfBoundsException("Index " + index + " is out of bounds");
+		
+		}
+			T t = (T) items[index];
+		
 
 			if (index < this.size - 1) {
-				System.arraycopy(items, index + 1, items, index, this.size - index);
+				for (int i = index; i<size-1; i++) {
+					items[i] = items[i+1];
+				}
 			}
-
 			this.size--;
-		} else {
-			throw new IndexOutOfBoundsException("Index out of bounds.");
-		}
+			return t;
 
-		return t;
+		
 	}
-
 }
